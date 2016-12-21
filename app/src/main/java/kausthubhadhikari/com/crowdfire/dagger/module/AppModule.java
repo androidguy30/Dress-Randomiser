@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import kausthubhadhikari.com.crowdfire.AppController;
+import kausthubhadhikari.com.crowdfire.utils.misc.AppUtils;
 import kausthubhadhikari.com.crowdfire.utils.misc.RxUtils;
 
 /**
@@ -13,7 +14,7 @@ import kausthubhadhikari.com.crowdfire.utils.misc.RxUtils;
 @Module
 public class AppModule {
 
-    private final AppController appController;
+    private AppController appController;
 
     public AppModule(AppController appController) {
         this.appController = appController;
@@ -23,6 +24,12 @@ public class AppModule {
     @Provides
     public RxUtils providesRxUtils() {
         return new RxUtils();
+    }
+
+    @Singleton
+    @Provides
+    public AppUtils providesAppUtils() {
+        return new AppUtils();
     }
 
 }

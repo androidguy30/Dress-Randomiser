@@ -1,5 +1,8 @@
 package kausthubhadhikari.com.crowdfire.view;
 
+import java.util.ArrayList;
+
+import kausthubhadhikari.com.crowdfire.model.pojo.GarmentPojo;
 import kausthubhadhikari.com.crowdfire.utils.base.BaseView;
 
 /**
@@ -15,5 +18,13 @@ public interface MainView extends BaseView {
     public void hideProgress();
 
     public void showSnackbar(String message);
+
+    public void setUpperGarmentData(ArrayList<GarmentPojo> data);
+
+    public void setLowerGarmentData(ArrayList<GarmentPojo> data);
+
+    public void addUpperGarment(GarmentPojo data);
+
+    public void addLowerGarment(GarmentPojo data);
 
 }
