@@ -3,6 +3,7 @@ package kausthubhadhikari.com.crowdfire.model.manager;
 import java.util.ArrayList;
 
 import kausthubhadhikari.com.crowdfire.model.data.Database;
+import kausthubhadhikari.com.crowdfire.model.pojo.FavGarmentPojo;
 import kausthubhadhikari.com.crowdfire.model.pojo.GarmentPojo;
 import kausthubhadhikari.com.crowdfire.utils.misc.RxUtils;
 import rx.Observable;
@@ -28,6 +29,11 @@ public class Manager {
     public Observable<ArrayList<GarmentPojo>> getLowerGarments() {
         Observable<ArrayList<GarmentPojo>> lowerGarments = Observable.just(database.getLowerGarments()).compose(rxUtils.applySchedulers());
         return lowerGarments;
+    }
+
+    public Observable<ArrayList<FavGarmentPojo>> getFavourites() {
+        Observable<ArrayList<FavGarmentPojo>> favouriteGarment = Observable.just(database.getFavGarments()).compose(rxUtils.applySchedulers());
+        return favouriteGarment;
     }
 
 

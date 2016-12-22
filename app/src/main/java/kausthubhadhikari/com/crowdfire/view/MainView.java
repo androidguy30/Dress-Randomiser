@@ -23,8 +23,6 @@ public interface MainView extends BaseView {
 
     public void setLowerGarmentData(ArrayList<GarmentPojo> data);
 
-    public void addUpperGarment(GarmentPojo data);
-
-    public void addLowerGarment(GarmentPojo data);
+    public void favFabState(boolean state);
 
 }

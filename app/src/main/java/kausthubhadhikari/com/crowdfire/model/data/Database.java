@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import kausthubhadhikari.com.crowdfire.model.pojo.FavGarmentPojo;
 import kausthubhadhikari.com.crowdfire.model.pojo.GarmentPojo;
 
 /**
@@ -29,6 +30,18 @@ public class Database {
 
     public ArrayList<GarmentPojo> getLowerGarments() {
         return dbHelper.getLowerGarments();
+    }
+
+    public ArrayList<FavGarmentPojo> getFavGarments() {
+        return dbHelper.getFavouritesSelection();
+    }
+
+    public boolean isFavourited(int upGardId, int loGarId) {
+        return dbHelper.isFavourite(loGarId, upGardId);
+    }
+
+    public void addFavourited(FavGarmentPojo data){
+        dbHelper.addFavouritedData(data);
     }
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kausthubhadhikari.com.crowdfire.model.data.Database;
 import kausthubhadhikari.com.crowdfire.model.manager.Manager;
+import kausthubhadhikari.com.crowdfire.model.pojo.FavGarmentPojo;
 import kausthubhadhikari.com.crowdfire.model.pojo.GarmentPojo;
 import kausthubhadhikari.com.crowdfire.utils.base.BasePresenter;
 import kausthubhadhikari.com.crowdfire.utils.misc.AppUtils;
@@ -36,7 +37,9 @@ public class MainPresenter extends BasePresenter {
     public void onViewCreated(boolean isLaunched) {
         mainView.setupView();
         if (isLaunched) {
-
+            mainView.showProgress();
+            retrieveLowerGarment();
+            retrieveUpperGarment();
         }
     }
 
@@ -59,6 +62,28 @@ public class MainPresenter extends BasePresenter {
     }
 
     public void onThrowsError(Throwable throwable) {
+
+    }
+
+    public void isFavourited(int lo_gar_id, int up_gar_id) {
+        mainView.favFabState(database.isFavourited(up_gar_id, lo_gar_id));
+    }
+
+    public void addFavourited(FavGarmentPojo data) {
+        database.addFavourited(data);
+        mainView.favFabState(true);
+    }
+
+
+    /**
+     * Fetch favourite might be needed in a new activity.
+     */
+    public void fetchFavouriteData() {
+        Subscription subscription = manager.getFavourites().subscribe(this::fetchFavouriteData, this::onThrowsError);
+        addSubsciption(subscription);
+    }
+
+    public void fetchFavouriteData(ArrayList<FavGarmentPojo> data) {
 
     }
 

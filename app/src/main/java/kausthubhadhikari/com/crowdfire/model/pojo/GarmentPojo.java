@@ -12,6 +12,5 @@ public class GarmentPojo {
 
     public AppConstants.ClothType type;
 
-    public String description;
-
+    public int id;
 }
